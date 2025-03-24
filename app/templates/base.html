@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title | default:'*'}}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"></head>
+<body class="body">
+
+    <!-- <h1 style="text-align: center;">{{title}}</h1> -->
+
+ 
+        <div class="navbox">
+
+            <a title="Click Here Go To details Page" class="navs space" href="{% url 'app:logo' %}"><img style="width: 190px;" src="{% static 'assets/snowpark-footer-logo.png' %}" alt=""></a>
+
+
+            <a title="Click Here Go To Home Page" class="navs ani" href="{% url 'app:homepage' %}"><i class="bi bi-house-lock-fill"></i></a>
+            
+            <a title="Click Here Go To Contact Page" class="navs ani" href="{% url 'app:contact' %}"><i class="bi bi-person-lines-fill"></i></a>
+
+            <a title="Click Here Go To About Page" class="navs ani" href="{% url 'app:aboutpage' %}">About</a>
+
+
+            <a title="Click Here Go To Dashboard Page" class="navs ani" href="{% url 'app:dashboard' %}">Dashboard</a>
+
+            <a title="Click Here Go To cource Page" class="navs ani" href="{% url 'app:course' %}">Course</a>
+
+           
+            <a title="Click Here Go To Register Page" class="navs ani" href="{% url 'app:register' %}">Register</a>
+
+
+            <!-- <a title="Click Here Go To Log_in Page" class="navs " href="{% url 'app:login' %}"><img class="login" style="width: 60px;" src="{% static 'assets/download.jpg' %}" alt=""></a> -->
+
+        </div>
+
+        <div class="gap">
+            
+        </div>
+
+    {% block content %}
+
+    {% endblock %}
+
+    
+        <div class="footer">
+            <img src="{% static 'assets/scope-india-logo-home-page.png' %}" alt="scope india">
+            <img src="{% static 'assets/iso_iaflogo.png' %}" alt="">
+            <p style="color: white;font-size: 15px;">An ISO 9001:2015 Certified Company</p>
+            <p style="color: white;font-size: 15px;">All Rights Reserved Suffix E Solutions © 2007-2025</p>
+            <a id="loc2" href="">9745936073 (TPK)</a>
+            <a id="loc2" href="">9745936073 (TVM)</a>
+            <a id="loc2" href="">7592939481 (EKM)</a>
+            <a id="loc2" href="">8075536185 (NGL)</a>
+            <a id="loc2" href="">info@scopeindia.org</a>
+
+        </div>
+    
+    
+</body>
+</html>
+
