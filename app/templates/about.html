@@ -1,9 +1,70 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-<body style="color: white;">
-    <h1>about</h1>
+<body class="body" >
+
+   
+        <div class="star" >
+
+   
+                <h1 class="star2">SCOPE INDIA, your career partner!</h1>
+                <h2>One of India's best Training destinations for Software, Networking, and Cloud Computing courses with 17 years of Industrial experience.</h2>
+
+                <p class="home8">Software, Networking, and Cloud Professional Education Centre in Kerala and Tamil Nadu from 
+                        <span class="about5">Suffix E Solutions</span> 
+                with WORKING PROFESSIONALS oriented on-the-job TRAINING model. SCOPE INDIA provides courses for
+                        <span class="about5"> Software Programming </span> in Python (Data Science | Artificial Intelligence | Machine Learning | Deep Learning, Data Analytics), Java, PHP, .Net, MERN,
+                        <span class="about5"> Software Testing </span> Manual and Automation, 
+                        <span class="about5"> Cloud Computing </span> (AWS | Azure), 
+                        <span class="about5"> Server Administration </span> 
+                (MicroSoft MCSE | Linux RHCE), Networking (CCNA), 
+                        <span class="about5"> DevOps, Mobile App Development </span> 
+                in Flutter, and 
+                        <span class="about5"> Digital Marketing.</span>
+                A Training with a 100% Trusted Job-Based Internship Model. SCOPE INDIA has a Strong Placement Cell that provides jobs to thousands of students annually. We assure you, you won't regret it after training from SCOPE INDIA! <br><br>
+
+                This is how SCOPE INDIA can support both newbies and those experienced in the industry to upgrade their skills.</p>
+
+
+
+                <a href=""><img id="star" src="{% static 'assets/5star.png' %}" alt=""></a>
+
+                <p>Google 4.9 * Rated Institute</p>
+
+                <div class="about1" >   <a class="about2" href="{% url 'app:dashboard' %}">Recent Placements</a> </div>
+                <div class="about1" >    <a class="about2"  href="{% url 'app:course' %}">Cources</a>         </div>
+                <div class="about1" >   <a class="about2"  href="{% url 'app:register' %}">Register Now</a>     </div>
+
+      </div>
+
+      <div class="about3">
+      
+                <div class="" style="padding-top: 70px;">
+                
+                  <h1 class="about4">1000+</h1>
+                  <h5>STUDENTS ARE <br>TRAINED EVERY YEAR</h5>
+
+                </div>
+        
+                <div class="" style="padding: 0 200px;">
+                
+                  <h1 class="about4">30+</h1>
+                  <h5>COMPUTER COURSES</h5>
+                
+                </div>
+        
+                <div class="" style="padding-top: 70px;">
+                
+                  <h1 class="about4">95%</h1>
+                  <h5>STUDENTS ARE GETTING <br>PLACED EVERY YEAR</h5>
+                
+                </div>
+
+        </div>
+   
 </body>
 
 {% endblock %}
