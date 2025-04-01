@@ -1,9 +1,91 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <body class="body">
-    <h1>contact</h1>
+
+    <div class="star" >
+
+   
+        <h1 class="contact1">SCOPE INDIA is open 365 days a year</h1>
+        <h4>Let's discuss your career, 24/7 free Consultation</h4>
+
+        
+        <form class="contact3" method="post">
+
+            {% csrf_token %}
+
+            <div class="contact4 bold1">
+                <label class=" bold">Name </label>
+                <input type="text" placeholder="Enter Your Name"><br><br>
+
+                <label class=" bold">Email </label>
+                <input type="email" placeholder="Enter Your Email">
+            </div>
+
+            <iframe class="contact5" width="300" height="445" src="https://www.youtube.com/embed/ScS23tmTTPQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>           
+
+            <button class="btn11 bold" type="submit">Send Email</button>
+       
+        </form>
+
+        <a href="https://maps.app.goo.gl/zYFdkE9hRxEUvqdF6"><img class="contact2" src="{% static 'assets/5star.png' %}" alt=""></a>
+
+        <p>Google 4.9 * Rated Institute</p>
+    
+    </div>
+
+    
+
+
+    <h4 id="span1">Locations</h4>
+
+    <div class="loc">
+        <div class="loc2">
+            <h4 class="loc1">Technopark TVM, Kerala</h4>
+            <p> Phase 1, Main Gate, Diamond Arcade, Near Technopark, Trivandrum</p>
+            <a id="loc" href=""> 9745936073</a><br>
+            <a id="loc" href=""> technopark@scopeindia.org </a><br>
+            <a id="loc" href=""> www.scopeindia.org </a><br>
+            <a id="loc" target="_blank" href="https://maps.app.goo.gl/FrTvXXdtR4M67H4e6"> Location Route Map </a>
+        </div>
+
+        <div class="loc3">
+            <h4 class="loc1">Thampanoor TVM, Kerala</h4>
+            <p> TC 25/1403/3, Athens Plaza, SS Kovil Road, Thampanoor, Trivandrum, Kerala 695001</p>
+            <a id="loc" href=""> 9745936073</a><br>
+            <a id="loc" href=""> info@scopeindia.org</a><br>
+            <a id="loc" href=""> www.scopeindia.org</a><br>
+            <a id="loc" target="_blank" href="https://maps.app.goo.gl/uu8oPeynJCS8K5uK8"> Location Route Map</a>
+        </div>
+
+        <div class="loc4">
+            <h4 class="loc1">Kochi, Kerala</h4>
+            <p> SCOPE INDIA, Vasanth Nagar Rd, near JLN Metro Station, Kaloor, Kochi, Kerala 682025</p>
+            <a id="loc" href=""> 7592939481</a><br>
+            <a id="loc" href=""> kochi@scopeindia.org</a><br>
+            <a id="loc" href=""> www.scopeindia.org</a><br>
+            <a id="loc" target="_blank" href="https://maps.app.goo.gl/z5BHvtDUzdb5J8D17"> Location Route Map</a>
+        </div>
+
+        <div class="loc5">
+            <h4 class="loc1">Nagercoil, Tamil Nadu</h4>
+            <p> SCOPE INDIA, Near WCC College, Palace Rd, Nagercoil, Tamil Nadu 629001</p>
+            <a id="loc"  href=""> 8075536185</a><br>
+            <a id="loc"  href=""> ngl@scopeindia.org</a><br>
+            <a id="loc"  href=""> www.scopeindia.org</a><br>
+            <a id="loc" target="_blank"  href="https://maps.app.goo.gl/sPT2hYQyhE9ubXZA6"> Location Route Map</a>
+        </div>
+
+        <div class="loc6">
+            <h4 class="loc1">Nagercoil, Tamil Nadu</h4>
+            <p> SCOPE INDIA, Pharma Street, 5/2 Ward 28, Distillery Road, Putheri Nagercoil (Near WCC Jn)</p>
+            <a id="loc"  href=""> 8075536185</a><br>
+            <a id="loc"  href=""> ngl@scopeindia.org</a><br>
+            <a id="loc"  href=""> www.scopeindia.org</a><br>
+            <a id="loc" target="_blank"  href="https://maps.app.goo.gl/zFUmGSjphqYtvnze7"> Location Route Map</a>
+        </div>
+    </div>
 </body>
 
 {% endblock %}

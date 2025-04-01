@@ -19,5 +19,9 @@ urlpatterns=[
 
     path('gsfthagfsdfgs',views.logo,name="logo"),
 
-    path('bhhhdgfdhshjd',views.cource,name="course")
+    path('bhhhdgfdhshjd',views.cource,name="course"),
+
+    path('gdrgsf/<int:id>/gdrtsweaw',views.subject,name="sub"),
+
+    
 ]

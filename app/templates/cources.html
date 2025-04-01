@@ -3,7 +3,81 @@
 {% block content %}
 
 <body class="body">
-    jjhhjnfnnhfhfbhfhfhfhf
+    
+    <div class="course1">
+        <h1 class="course5">Software Programming Course</h1>
+        
+            <div class="course2">
+
+                {% for course in courses %}
+
+                    {% if course.id <= 11 %}
+
+                     <h6 class="course3">  <a class="course4" href="{% url 'app:sub' course.id %}"> {{course.course_name}} </a> </h6>
+
+                    {% endif %}
+
+
+                {% endfor %}
+
+            </div>
+
+        <h1 class="course5">Software Testing Courses</h1>
+
+            <div class="course2">
+
+                {% for course in courses %}
+
+                    {% if course.id > 11 and course.id <= 12 %}
+
+
+
+                        <h6 class="course3">  <a class="course4"  class="course1" href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+
+                    {% endif %}
+
+
+                {% endfor %}
+            </div>
+
+        <h1 class="course5">Networking, Server, & Cloud</h1>
+
+            <div class="course2">
+
+                {% for course in courses %}
+
+                    {% if course.id > 12 and course.id <= 19 %}
+
+
+
+                        <h6 class="course3">  <a class="course4"  href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+
+                    {% endif %}
+
+
+                {% endfor %}
+            </div>
+
+        <h1 class="course5">Other Courses</h1>
+
+            <div class="course2">
+
+                {% for course in courses %}
+
+                    {% if course.id > 19  %}
+
+                        <h6 class="course3">  <a  class="course4" href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+
+                    {% endif %}
+
+                {% endfor %}
+        
+            </div>
+
+        
+
+    </div>
+
 </body>
 
 {% endblock %}
