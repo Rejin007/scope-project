@@ -61,7 +61,7 @@
 .reg{
     color: rgb(4, 4, 4);
     font-size: 20px;
-    background-color: rgb(216, 216, 216);
+    background-color: rgb(235, 235, 235);
     display: grid;
     gap: 10px;
     margin:0 25%;
@@ -471,4 +471,7 @@
 .subject1{
     font-size: 35px;
     background-color: rgb(5, 2, 42);
+}
+.bold2{
+    background-color: rgb(229, 255, 0);
 }
