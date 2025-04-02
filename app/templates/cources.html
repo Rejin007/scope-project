@@ -1,11 +1,22 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
 <body class="body">
+
+    <div class="star pad" >
+        <h1 class="star2 course5">SCOPE INDIA</h1>
+        <h3>Center for Software, Networking, & Cloud Education</h3>
+        <h4>All Trainers at SCOPE INDIA are working professionals, Software Engineers, Networking Engineers, and Software Test Engineers of Suffix E Solutions with
+             <strong class="about5 star2">17 years of Industrial experience.</strong> </h4>
+        <a target="_blank" href="https://maps.app.goo.gl/zYFdkE9hRxEUvqdF6"><img id="star" src="{% static 'assets/5star.png' %}" alt=""></a>
+
+                <p>Google 4.9 * Rated Institute</p>
+    </div>
     
     <div class="course1">
-        <h1 class="course5">Software Programming Course</h1>
+        <h1 class="star2 course5">Courses</h1>
+        <h2 class="course51">Software Programming Course</h2>
         
             <div class="course2">
 
@@ -13,7 +24,7 @@
 
                     {% if course.id <= 11 %}
 
-                     <h6 class="course3">  <a class="course4" href="{% url 'app:sub' course.id %}"> {{course.course_name}} </a> </h6>
+                      <a class="course4" href="{% url 'app:sub' course.id %}"><h6 class="course3 course4">  {{course.course_name}} </h6> </a>
 
                     {% endif %}
 
@@ -22,7 +33,7 @@
 
             </div>
 
-        <h1 class="course5">Software Testing Courses</h1>
+        <h1 class="course51 course6">Software Testing Courses</h1>
 
             <div class="course2">
 
@@ -31,8 +42,8 @@
                     {% if course.id > 11 and course.id <= 12 %}
 
 
-
-                        <h6 class="course3">  <a class="course4"  class="course1" href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+                        <a></a>
+                       <a class="course4" href="{% url 'app:sub' course.id %}"> <h6 class="course3 course4">  {{course.course_name}} </h6> </a>
 
                     {% endif %}
 
@@ -40,7 +51,7 @@
                 {% endfor %}
             </div>
 
-        <h1 class="course5">Networking, Server, & Cloud</h1>
+        <h1 class="course51">Networking, Server, & Cloud</h1>
 
             <div class="course2">
 
@@ -50,7 +61,8 @@
 
 
 
-                        <h6 class="course3">  <a class="course4"  href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+                       <a class="course4" href="{% url 'app:sub' course.id %}"> <h6 class="course3 course4">  {{course.course_name}} </h6> </a>
+
 
                     {% endif %}
 
@@ -58,7 +70,7 @@
                 {% endfor %}
             </div>
 
-        <h1 class="course5">Other Courses</h1>
+        <h1 class="course51">Other Courses</h1>
 
             <div class="course2">
 
@@ -66,7 +78,8 @@
 
                     {% if course.id > 19  %}
 
-                        <h6 class="course3">  <a  class="course4" href="{% url 'app:sub' course.id %}">{{course.course_name}} </a> </h6>
+                       <a class="course4" href="{% url 'app:sub' course.id %}"> <h6 class="course3 course4">  {{course.course_name}} </h6> </a>
+
 
                     {% endif %}
 
@@ -77,6 +90,31 @@
         
 
     </div>
+
+    <div class="about3">
+      
+        <div class="" style="padding-top: 70px;">
+        
+          <h1 class="about4">1000+</h1>
+          <h5>STUDENTS ARE <br>TRAINED EVERY YEAR</h5>
+
+        </div>
+
+        <div class="" style="padding: 0 200px;">
+        
+          <h1 class="about4">30+</h1>
+          <h5>COMPUTER COURSES</h5>
+        
+        </div>
+
+        <div class="" style="padding-top: 70px;">
+        
+          <h1 class="about4">95%</h1>
+          <h5>STUDENTS ARE GETTING <br>PLACED EVERY YEAR</h5>
+        
+        </div>
+
+</div>
 
 </body>
 

@@ -65,9 +65,9 @@ def cource(req):
 
 def subject(req,id):
 
-    title = "*"
-
     courses = Courses.objects.get(id=id)
+
+    title = courses.course_name
 
     subject = Java_Full_Stack.objects.all()
 
@@ -84,8 +84,6 @@ def subject(req,id):
     flutter = Flutter.objects.all()
 
     ionic = IONIC.objects.all()
-
-    #=================================================================
 
     Website = Website_Designing.objects.all()
     

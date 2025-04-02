@@ -5,11 +5,24 @@
 {% block content %}
 
 <body class="body">
+
+    <div class="star pad" >
+        <h1 class="star2 course5">{{courses.course_name}}</h1>
+        <h3>Center for Software, Networking, & Cloud Education</h3>
+        <h4>All Trainers at SCOPE INDIA are working professionals, Software Engineers, Networking Engineers, and Software Test Engineers of Suffix E Solutions with
+             <strong class="about5 star2">17 years of Industrial experience.</strong> </h4>
+        <a target="_blank" href="https://maps.app.goo.gl/zYFdkE9hRxEUvqdF6"><img id="star" src="{% static 'assets/5star.png' %}" alt=""></a>
+
+                <p>Google 4.9 * Rated Institute</p>
+    </div>
     
     <div class="course1">
+    <h1 class="star2 course5">Course Content</h1>
                 
         <div class="sub">
             {% if courses.id == 1 %}
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
 
                 {% for sub in subject %}
 
@@ -25,7 +38,8 @@
         <div class="sub">
 
                 {% elif courses.id == 2 %}
-
+                <h1></h1>
+                <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                     {% for sub in python %}
 
                         <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -39,7 +53,8 @@
 
         <div class="sub">
             {% elif courses.id == 3 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in php %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -53,7 +68,8 @@
         <div class="sub">
 
             {% elif courses.id == 5 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in core %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -67,7 +83,8 @@
         <div class="sub">
 
             {% elif courses.id == 6 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in mern %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -80,7 +97,8 @@
 
         <div class="sub">
             {% elif courses.id == 7 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in mean %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -93,7 +111,8 @@
         <div class="sub">
 
             {% elif courses.id == 8 %}
-
+            <h1></h1>
+            <h5 class="subject1">4 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in flutter %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -106,7 +125,8 @@
 
         <div class="sub">
             {% elif courses.id == 9 %}
-
+            <h1></h1>
+            <h5 class="subject1">4 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in ionic %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -120,7 +140,8 @@
         <div class="sub">
 
             {% elif courses.id == 10 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in Website %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -135,7 +156,8 @@
 
 
             {% elif courses.id == 11 %}
-
+            <h1></h1>
+            <h5 class="subject1">3 months course + 1 month on the Job Training</h5><br>
                 {% for sub in ui_ux %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -150,7 +172,8 @@
         
 
             {% elif courses.id == 12 %}
-
+            <h1></h1>
+            <h5 class="subject1">5 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in Software %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -165,7 +188,8 @@
         
 
             {% elif courses.id == 13 %}
-
+            <h1></h1>
+            <h5 class="subject1">8 months course + 3 months on the Job Training</h5><br>
                 {% for sub in Networking %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -180,7 +204,8 @@
         
 
             {% elif courses.id == 14 %}
-
+            <h1></h1>
+            <h5 class="subject1">2 months course + 1 month on the Job Training</h5><br>
                 {% for sub in aws %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -195,7 +220,8 @@
         
 
             {% elif courses.id == 15 %}
-
+            <h1></h1>
+            <h5 class="subject1">2 Months course + 1 month on the Job Training</h5><br>
                 {% for sub in ms %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -209,7 +235,8 @@
         
 
             {% elif courses.id == 16 %}
-
+            <h1></h1>
+            <h5 class="subject1">100hrs course + 1 month on the Job Training</h5><br>
                 {% for sub in rhcsa %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -224,7 +251,8 @@
         
 
             {% elif courses.id == 17 %}
-
+            <h1></h1>
+            <h5 class="subject1">3 Months course + 3 month on the Job Training</h5><br>
                 {% for sub in rhce %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -239,7 +267,8 @@
         
 
             {% elif courses.id == 18 %}
-
+            <h1></h1>
+            <h5 class="subject1">6 months course + 3 month on the Job Training</h5><br>
                 {% for sub in devOps %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -254,13 +283,15 @@
         
 
             {% elif courses.id == 19 %}
-
+            <h1></h1>
+            <h5 class="subject1">80hrs course</h5><br>
                 {% for sub in ccna %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
         
                 {% endfor %}
         </div>
+        <div class="gap1"></div>
     </div>
 
     <div class="course1">
@@ -268,7 +299,8 @@
         <div class="sub">
 
             {% elif courses.id == 20 %}
-
+            <h1></h1>
+            <h5 class="subject1">6 months course + 3 months on the Job Training</h5><br>
                 {% for sub in data_Science %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -282,7 +314,8 @@
         
 
             {% elif courses.id == 21 %}
-
+            <h1></h1>
+            <h5 class="subject1">4 Months course + 3 months on the Job Training</h5><br>
                 {% for sub in data_Analytics %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -297,7 +330,8 @@
         
 
             {% elif courses.id == 22 %}
-
+            <h1></h1>
+            <h5 class="subject1">3 Months course + 1 months on the Job Training</h5><br>
                 {% for sub in digital_Marketing %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -312,7 +346,8 @@
         
 
             {% elif courses.id == 23 %}
-
+            <h1></h1>
+            <h5 class="subject1">60hrs course + 1 month on the Job Training</h5><br>
                 {% for sub in microsoft %}
         
                     <h5 class="course3 course4">{{ sub.sub_name }}</h5>
@@ -322,7 +357,30 @@
         </div>
     </div>
     
+    <div class="about3">
+      
+        <div class="" style="padding-top: 70px;">
         
+          <h1 class="about4">1000+</h1>
+          <h5>STUDENTS ARE <br>TRAINED EVERY YEAR</h5>
+
+        </div>
+
+        <div class="" style="padding: 0 200px;">
+        
+          <h1 class="about4">30+</h1>
+          <h5>COMPUTER COURSES</h5>
+        
+        </div>
+
+        <div class="" style="padding-top: 70px;">
+        
+          <h1 class="about4">95%</h1>
+          <h5>STUDENTS ARE GETTING <br>PLACED EVERY YEAR</h5>
+        
+        </div>
+
+</div>
     
 
 </body>
