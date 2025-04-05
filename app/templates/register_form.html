@@ -8,13 +8,13 @@
         <h1 class="course5 star2">Registration</h1>
         <h4 style="color: rgb(255, 255, 0);">It's just a matter of 80 days to an IT job!</h4>
     </div>
-    <div>
-        <form method="post" class="reg">
+    <div >
+        <form method="post" class="reg" enctype="multipart/form-data">
             {% csrf_token %}
             <div  class="gol1 ">
                 <div class="reg11">
                     <label class=" bold">Full Name (required)</label><br>
-                    <input class="reg00" type="text" name="name" placeholder="Enter Your Full Name" required>
+                    <input class="reg00" type="text" name="regname" placeholder="Enter Your Full Name" required>
                 </div>
             
                 <div class="reg11">
@@ -25,19 +25,22 @@
                 <div class="reg11">
                     <label class=" bold">Gender (required)</label><br><br>
                 
+                    <label class="text1" id="male">
                     <input type="radio" name="gender" value="male" id="male">
-                    <label class="text1">Male</label>
+                    Male</label>
                 
+                    <label class="text1" id="female" >
                     <input type="radio" name="gender" value="female" id="female">
-                    <label class="text1" >Female</label>
+                    Female</label>
                 
-                    <input type="radio" name="gender" value="other">
-                    <label class="text1" >Other</label>
+                    <label class="text1" id="Other" >
+                    <input type="radio" name="gender" value="other" id="Other">
+                    Other</label>
                 </div>
             
                 <div class="reg11">
                     <label class=" bold">Educational Qualification</label><br>
-                    <input type="text" class="reg00"  name="Qualification" placeholder="Enter Your Educational Qualification">
+                    <input type="text" class="reg00"  name="qualification" placeholder="Enter Your Educational Qualification">
                 </div>
             
                 <div class="reg11">
@@ -126,41 +129,48 @@
 
             <div class="reg11">
                 <label class=" bold">Email (required)</label><br>
-                <input class="reg00"  type="email" name="email" placeholder="Enter your Email" required>
+                <input class="reg00"  type="email" name="regemail" placeholder="Enter your Email" required>
             </div>
 
             <div class="reg11">
                 <label class=" bold">Gaurdian's Mobile</label><br>
-                <input class="reg00"  type="tel" name="Gaurdianmobile" placeholder="Enter Your Gaurdian's Mobile Number">
+                <input class="reg00"  type="tel" name="gaurdianmobile" placeholder="Enter Your Gaurdian's Mobile Number">
             </div>
 
             <div class="reg11">
                 <label class=" bold">Training Mode (required)</label><br><br>
 
-                <input type="radio" name="Mode" value="Live online">
-                <label class="text1">Live online</label>
+                <label class="text1" id="online">
+                    <input type="radio" name="mode" value="online" id="online">
+                Live online</label>
 
-                <input type="radio" name="Mode" value="ofline">
-                <label class="text1">Classroom-ofline</label>
+                <label class="text1">
+                    <input type="radio" name="mode" value="offline" id="offline">
+                Classroom offline</label>
             </div>
 
             <div class="reg11">
                 <label class=" bold">SCOPE INDIA Location (required)</label><br><br>
 
-                <input type="radio" name="location">
-                <label class="text1">Technopark TVM</label><br>
+                <label class="text1" for="technopark">
+                    <input type="radio" name="places" value="technopark" id="technopark">
+                Technopark TVM</label><br>
 
-                <input type="radio" name="location" >
-                <label class="text1"> Thampanoor TVM</label>
+                <label class="text1" for="thampanoor">
+                    <input type="radio" name="places" value="thampanoor" id="thampanoor">
+                Thampanoor TVM</label>
 
-                <input type="radio" name="location" >
-                <label class="text1"> Kochi</label><br>
+                 <label class="text1" for="kochi">
+                    <input type="radio" name="places" value="kochi" id="kochi">
+                 Kochi</label><br>
 
-                <input type="radio" name="location" >
-                <label class="text1">Nagercoil</label>
+                 <label class="text1" for="nagarcoil">
+                    <input type="radio" name="places" value="nagarcoil" id="nagarcoil">
+                Nagercoil</label>
 
-                <input type="radio" name="location" >
-                <label class="text1"> Online</label>
+                <label class="text1" for="online">
+                    <input type="radio" name="places" value="online" id="online">
+                 Online</label>
             </div>
         </div>
         <div class="gol2">
@@ -212,7 +222,7 @@
 
             <div class="reg11">
                 <label class=" bold">PIN/Zip Code</label><br>
-                <input class="reg00"  type="text" name="pin" placeholder="Enter Your PIN/Zip Code">
+                <input class="reg00"  type="number" name="pincode" placeholder="Enter Your PIN/Zip Code">
             </div>
 
             <div class="reg11">
@@ -233,7 +243,7 @@
 
             <div class="reg11">
                 <label class=" bold">Upload Avatar</label><br>
-                <input class="reg00 bold2"  type="file" name="avatar" placeholder="Enter Your Upload Avatar">
+                <input class="reg00 bold2"  type="file" name="avatar" placeholder="Enter Your Upload Avatar" id="avatar">
             </div>
 
 

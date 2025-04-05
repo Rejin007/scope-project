@@ -9,25 +9,31 @@
    
         <h1 class="contact1">SCOPE INDIA is open 365 days a year</h1>
         <h4>Let's discuss your career, 24/7 free Consultation</h4>
-
-        
+  
         <form class="contact3" method="post">
 
             {% csrf_token %}
 
             <div class="contact4 bold1">
                 <label class=" bold">Name </label>
-                <input type="text" placeholder="Enter Your Name"><br><br>
+                <input type="text" name="user_name" placeholder="Enter Your Name"><br><br>
 
                 <label class=" bold">Email </label>
-                <input type="email" placeholder="Enter Your Email">
+                <input type="email" name="email" placeholder="Enter Your Email"><br><br>
+
+                <label class=" bold">Subject</label>
+                <input type="text" name="subject" placeholder="Enter Your Subject"><br><br>
+
+                <label class=" bold">Message </label>
+                <input type="text" name="content" placeholder="Enter Your Message">
             </div>
 
-            <iframe class="contact5" width="300" height="445" src="https://www.youtube.com/embed/-dMUj6g0Bi4"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>           
-
+            <iframe class="contact5" width="300" height="445" src="https://www.youtube.com/embed/c_eWYVl6J8U"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>           
+          
             <button class="btn11 bold" type="submit">Send Email</button>
        
         </form>
+        
 
         <a href="https://maps.app.goo.gl/zYFdkE9hRxEUvqdF6"><img class="contact2" src="{% static 'assets/5star.png' %}" alt=""></a>
 

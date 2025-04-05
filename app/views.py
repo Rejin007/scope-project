@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .models import *
 from .form import *
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 
@@ -18,14 +20,65 @@ def about_page(req):
     return render(req,"about.html",{"title":title})
 
 def contact_page(req):
-
     title = "contact page"
+    form = Contactform(req.POST)
 
-    return render(req,"contact.html",{"title":title})
+    if req.method=='POST':
+
+        if form.is_valid():
+
+            user = form.save(commit=False)
+
+            mail=  req.POST.get('email')
+            subject = req.POST.get('subject')
+            text = req.POST.get('content')
+            name = req.POST.get('user_name')
+            # message = f"Name : {name}\nEmail : {mail}\nContent : {text}"
+            message = ""
+            html =f""" 
+                <html>
+                    <body>
+                        <h1 style="text-align: center;color: rgb(0, 255, 68);">YOUR EMAIL</h1>
+                        <h3 >Name : <span style="color: red;">{name}</span></h3>
+                        <h3>Email : <span style="color: red;">{mail}</span></h3>
+                        <h3>Content : <span style="color: red;"><br> &emsp; &emsp;&emsp;{text}</span></h3>
+                    </body>
+                </html>
+            """
+
+            try:
+                send_mail(
+                    subject = subject,
+                    message = message,
+                    from_email = mail,
+                    html_message= html,
+                    recipient_list = ['rejinrjr144@gmail.com'],
+                )
+                # user.save()
+                return redirect('app:homepage')
+            except Exception as e:
+                return HttpResponse(f"An error occurred while sending the email {e}")
+
+    return render(req,"contact.html",{"title":title,"form":form})
+
+    
 
 def register(req):
 
     title = "register_form"
+    if req.method == 'POST':
+        print(req.POST,'files**** ',req.FILES)
+        form = Registerform(req.POST , req.FILES)
+        print("registerform done")
+        if form.is_valid():
+            print("registerform is valid")
+
+            form.save()
+
+            return redirect('app:homepage')
+
+        else:
+            print("form not valid","*/*/*/*/",form.errors)
 
     return render(req,"register_form.html",{"title":title})
 
@@ -52,16 +105,9 @@ def logo(req):
 def cource(req):
     title = "Courses"
     
-    # Fetch the course using the course_code passed from the URL
-    
-    obj = Courses.objects.all()
-    print(obj,11111)
-    
-    
-    courses = obj
+    courses = Courses.objects.all()
 
     return render(req, "cources.html", {"title": title, "courses": courses})
-
 
 def subject(req,id):
 
@@ -112,15 +158,6 @@ def subject(req,id):
     digital_Marketing = Digital_Marketing.objects.all()
     
     microsoft = Microsoft.objects.all()
-    
-    
-
-
-
-
-
-
-    # key = Subject.objects.all()
 
     return render(req,"subjects.html",{
 
@@ -134,7 +171,6 @@ def subject(req,id):
             "mean":mean,
             "flutter":flutter,
             "ionic":ionic,
-
             "Website":Website,
             "ui_ux":ui_ux,
             "Software":Software,
@@ -149,7 +185,4 @@ def subject(req,id):
             "data_Analytics":data_Analytics,
             "digital_Marketing":digital_Marketing,
             "microsoft":microsoft,
-
-
         })
-

@@ -67,7 +67,7 @@
     margin:0 25%;
     padding: 10px;
     grid-template-columns: repeat(2, 1fr);
-    border-radius: 4%;
+    border-radius: 1%;
     min-width: 51%;
     max-width: 52%;
 }
@@ -375,7 +375,7 @@
     grid-row: 1;
     min-width: 100%;
     max-width: 100%;
-    padding-top: 40%;
+    padding-top: 10%;
 
 }
 .contact5{
@@ -474,4 +474,14 @@
 }
 .bold2{
     background-color: rgb(229, 255, 0);
+}
+.alert {
+    padding: 10px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: none;
 }
