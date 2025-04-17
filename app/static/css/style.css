@@ -438,7 +438,7 @@
     border-radius: 20%;   
 }
 .course3:hover{
-    border: 5px groove rgb(0, 0, 0);
+    /* border: 5px groove rgb(0, 0, 0); */
     background-color: #ffccff;
 }
 .course4{
@@ -484,4 +484,123 @@
     right: 20px;
     z-index: 1000;
     display: none;
+}
+.login1{
+    padding: 20px 8%;
+    /* background-color: rgba(238, 0, 255, 0.74); */
+    background-image: url("/static/assets/istockphoto-1286354786-612x612.jpg");
+    margin:10% 30%;
+    border-radius: 5%;
+    text-align: center;
+    box-shadow: 
+    2px 0 15px rgba(255, 255, 255, 0.637),  /* Right shadow */
+    -2px 0 15px rgba(255, 255, 255, 0.729), /* Left shadow */
+    0 2px 15px rgba(255, 255, 255, 0.703),  /* Bottom shadow */
+    0 -2px 15px rgba(255, 255, 255, 0.73); /* Top shadow */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.login2{
+    font-size: 20px;
+    width: 100%;
+    border-radius: 8px;
+    height: 50px;
+}
+.login2:hover{
+    border: 3px solid black;
+    box-shadow: 
+    2px 0 15px rgba(2, 22, 202, 0.548),  /* Right shadow */
+    -2px 0 15px rgb(21, 255, 0), /* Left shadow */
+    0 2px 15px rgba(255, 255, 255, 0.703),  /* Bottom shadow */
+    0 -2px 15px rgba(255, 255, 255, 0.73); /* Top shadow */
+}
+.login3{
+    background: linear-gradient(90deg, rgb(0, 191, 255) 0%, rgb(0, 50, 249) 100% 100%);
+    width: 70%;
+    font-size: 30px;
+    border-radius: 10%;
+    font-weight: bolder;
+    color: white;box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.login3:hover{
+    background: linear-gradient(90deg, rgb(0, 81, 255) 0%, rgb(0, 191, 255)100% 100%);
+}
+.login4{
+    text-align: center;
+    /* color:rgb(255, 255, 255); */
+    background-color: rgb(255, 255, 255);
+    margin: 5px 0;
+    border-radius: 5px;
+}
+.login5{
+    color: rgb(255, 255, 255);
+}
+.body3{
+    background-image: url("/static/assets/istockphoto-1286354786-612x612.jpg");
+    background-size:  100%;
+    background-attachment: fixed;
+    margin: 0; 
+    max-width: 100%;
+}
+input[type="checkbox"] {
+    width: 20px; 
+    height: 30px;
+}
+input[type="radio"] {
+    width: 20px;  
+    height: 20px; 
+}
+@keyframes ani {
+    0% {
+        transform: rotate(0deg); /* Start at 0 degrees */
+      }
+      100% {
+        transform: rotate(360deg); /* End at 360 degrees (one full rotation) */
+      }
+    
+}
+.illu{
+    margin-left: 30%;
+    padding: 10%;
+    border-radius: 60%;
+    width: 50%;
+    animation: ani 2s linear infinite;
+}
+.login6{
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: 300;
+}
+.login6:hover{
+    text-decoration: underline;
+    color: rgb(30, 0, 255);
+    border: 2px solid rgb(85, 255, 0);
+}
+.login7{
+    background-color: rgb(0, 255, 13);
+    padding: 2px;
+    border-radius: 5px;
+}
+.gender{
+    background-color: aliceblue;
+    font-size: 15px;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 100%;
+    min-width: 100%;
+}
+.refresh1{
+    background-color: rgb(0, 255, 13);
+    padding: 5px;
+    text-decoration: none;
+    font-size: 21px;
+    border-radius: 5px;
+    font-weight: bolder;
+    color: rgb(0, 0, 0);
+    border: 2px solid greenyellow;
+    
+}
+.refresh1:hover{
+    background-color: rgb(246, 255, 0);
 }

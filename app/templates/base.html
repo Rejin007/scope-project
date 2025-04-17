@@ -21,7 +21,7 @@
 
  
         <div class="navboxss">
-
+            
             <a title="Click Here Go To details Page" class="navs space" href="{% url 'app:homepage' %}"><img style="width: 190px;" src="{% static 'assets/snowpark-footer-logo.png' %}" alt=""></a>
 
 
@@ -31,17 +31,24 @@
 
             <a title="Click Here Go To About Page" class="navs ani" href="{% url 'app:aboutpage' %}">About</a>
 
+            <a title="Click Here Go To cource Page" class="navs ani" href="{% url 'app:course' %}">Course</a>
 
             <a title="Click Here Go To Dashboard Page" class="navs ani" href="{% url 'app:dashboard' %}">Dashboard</a>
 
-            <a title="Click Here Go To cource Page" class="navs ani" href="{% url 'app:course' %}">Course</a>
+            <!-- <a title="Click Here Go To cource Page" class="navs ani" href="{% url 'app:course' %}">Course</a> -->
 
            
             <a title="Click Here Go To Register Page" class="navs ani" href="{% url 'app:register' %}">Register</a>
 
 
-            <!-- <a title="Click Here Go To Log_in Page" class="navs " href="{% url 'app:login' %}"><img class="login" style="width: 60px;" src="{% static 'assets/download.jpg' %}" alt=""></a> -->
+            <!-- <a title="Click Here Go To Log_in Page" class="navs " href="{% url 'app:login' %}"><img class="login" style="width: 20px;" src="{% static 'assets/download.jpg' %}" alt=""></a> -->
 
+            {% if user.is_authenticated %}
+                <a title="Click Here to logout" style="color: aqua;" class="navs ani" href="{% url 'app:logout' %}">logout</a>
+            {% else %}
+
+            <a title="Click Here to login" class="navs " href="{% url 'app:login' %}"><img class="login" style="width: 20px;" src="{% static 'assets/download.jpg' %}" alt=""></a>
+            {% endif %}
         </div>
 
         <div class="gap">

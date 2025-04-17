@@ -1,9 +1,48 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 
-<body  class="body">
-    <h1>login</h1>
+<body  class="body3">
+    <div>
+        <!-- <img class="illu" src="{% static 'assets/images.jpeg' %}" alt=""> -->
+        <form method="post" class="login1">
+            {% csrf_token %}
+
+            <!-- {{ form.as_p }} -->
+
+                <div style="font-size: 40px;">
+                    <h1 style="color: rgb(255, 255, 255);padding-bottom: 20px;">Login Form</h1>
+
+                    <input type="text" class="login2 login4" name="username" value="{{username}}" placeholder="Username" required><br>
+                    
+                    <input type="Password" class="login2 login4" name="password" placeholder="Password" required value="{{password}}"><br>
+
+                    {% if otp_send %}
+                        <p style="color: rgb(242, 255, 0);font-size: 19px;">We send you an OTP.Enter it below :</p>
+                        <input type="text" class="login2 login4" placeholder="Enter OTP Here" name="otp"  style="margin-bottom: 20px;" pattern="[0-9]{6}" required>
+                        <label style="font-size: 25px;" class="login5">
+                            <input type="checkbox" name="cookie_box" value="cookie"> &nbsp; save cookies
+                        </label><br>
+                    {% endif %}
+
+                </div>
+
+                
+                {% if not otp_send   %}
+                    <a class="login6 login7" href="{% url 'app:forgotpassword' %}">Forget Password?</a>&emsp;&emsp;
+                    <a class="login6 login7" href="{% url 'app:createaccount' %}">Sign_up Account</a><br><br>
+                    <a title="Click Here To refresh" class="refresh1" href="{% url 'app:refresh' %}">Refresh</a>
+                {% endif %}
+                <br><br>
+            <div style="text-align: center;">
+                <button class="login3" type="submit">Log in</button>
+            </div>
+            
+        </form>
+    </div>
+
 </body>
 
 {% endblock %}

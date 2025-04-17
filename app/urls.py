@@ -15,15 +15,28 @@ urlpatterns=[
 
     path('sxedzfrxxreds',views.register,name="register"),
 
-    path('srtsrsfcggggggggggggddtgd',views.login_page,name="login"),
+    path('login',views.login_page,name="login"),
 
     path('dfdhgfhhgfchf',views.dashboard,name="dashboard"),
 
-    path('gsfthagfsdfgs',views.logo,name="logo"),
+    path('gsfthagfsdfgs',views.logout,name="logout"),
 
     path('bhhhdgfdhshjd',views.cource,name="course"),
 
     path('gdrgsf/<int:id>/gdrtsweaw',views.subject,name="sub"),
+
+    path('mail',views.mail,name="mail"),
+
+    path('forgot',views.forgotpassword,name="forgotpassword"),
+
+    path('create',views.createaccount,name="createaccount"),
+
+    path('verify/<uidb64>/<token>',views.activate,name="activate"),
+
+    path('cookie',views.cookie_page,name="cookie"),
+
+    path('refresh',views.refresh,name="refresh")
+    
 
     
 ]

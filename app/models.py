@@ -1,21 +1,31 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
+import datetime
 # Create your models here.
 GENDER_CHOICES = [
-        ('male', 'male'),
-        ('female', 'female'),
-        ('other', 'other'),
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other'),
     ]
 MODE_CHOICES=[
-    ('online','online'),
-    ('offline','offline')
+    ('online','Online'),
+    ('offline','Offline')
+]
+HOBIES = [
+    ('Extracurricular activities', 'Extracurricular activities'),
+    ('Reading Books', 'Reading Books'),
+    ('Sports', 'Sports'),
+    ('Music', 'Music'),
 ]
 LOC_CHOICES=[
-    ('technopark','technopark'),
-    ('thampanoor','thampanoor'),
-    ('kochi','kochi'),
-    ('nagarcoil','nagarcoil'),
-    ('online','online'),
+    ('technopark','Technopark'),
+    ('thampanoor','Thampanoor'),
+    ('kochi','Kochi'),
+    ('nagarcoil','Nagarcoil'),
+    ('online','Online'),
 ]
+
 COURSE_CHOICES = [
         ('PHP Fullstack', 'PHP Fullstack'),
         ('Python Fullstack', 'Python Fullstack'),
@@ -27,7 +37,37 @@ COURSE_CHOICES = [
         ('Python Mastery (Python / Django / MYSQL)', 'Python Mastery (Python / Django / MYSQL)'),
         ('Google Flutter Mobile App Development (iOS / Android)', 'Google Flutter Mobile App Development (iOS / Android)'),
         ('UI/UX Designing', 'UI/UX Designing'),
-        # Add more courses as needed...
+        ('Digital Marketing Master Program','Digital Marketing Master Program'),
+        ('Software Testing Advanced (Manual / Automation)','Software Testing Advanced (Manual / Automation)'),
+        ('Software Testing Manual (ISTQB)','Software Testing Manual (ISTQB)'),
+        ('ISTQB CERTIFICATION (EXAM Reg)','ISTQB CERTIFICATION (EXAM Reg)'),
+        ('Selenium Testings & Cuccumber / Appium Mobile / QTP / Landrunner / Jmeter / Jira','Selenium Testings & Cuccumber / Appium Mobile / QTP / Landrunner / Jmeter / Jira'),
+        ('Computer Networking (CCNA)','Computer Networking (CCNA)'),
+        ('Server Admin (MCSE)','Server Admin (MCSE)'),
+        ('Server Admin (RHCE)','Server Admin (RHCE)'),
+        ('Networking & Server Admin (CCNA / MCSE / Hardware )','Networking & Server Admin (CCNA / MCSE / Hardware )'),
+        ('Networking & Server Admin (CCNA / RHCE / Hardware)','Networking & Server Admin (CCNA / RHCE / Hardware)'),
+        ('Networking & Server Admin (CCNA / MCSE / RHCE / Hardware)','Networking & Server Admin (CCNA / MCSE / RHCE / Hardware)'),
+        ('Security Surveillance & Networking Internship(CCNA / CCTV / Hardware)','Security Surveillance & Networking Internship(CCNA / CCTV / Hardware)'),
+        ('Cloud Admin (AWS / MS AZURE)','Cloud Admin (AWS / MS AZURE)'),
+        ('Cloud & Networking Admin (CCNA / AWS / Hardware)','Cloud & Networking Admin (CCNA / AWS / Hardware)'),
+        ('Cloud & Networking Admin (CCNA / MS ASURE / Hardware)','Cloud & Networking Admin (CCNA / MS ASURE / Hardware)'),
+        ('Cloud & Networking Admin (CCNA / AWS)','Cloud & Networking Admin (CCNA / AWS)'),
+        ('Cloud & Networking Admin (CCNA / MS AZURE)','Cloud & Networking Admin (CCNA / MS AZURE)'),
+        ('Cloud & Server Admin (MCSE / AWS / Hardware)','Cloud & Server Admin (MCSE / AWS / Hardware)'),
+        ('Cloud & Server Admin (MCSE / MS AZURE / Hardware)','Cloud & Server Admin (MCSE / MS AZURE / Hardware)'),
+        ('Cloud & Server Admin (RHCE / AWS / Hardware)','Cloud & Server Admin (RHCE / AWS / Hardware)'),
+        ('Cloud & Server Admin (RHCE / MS AZURE / Hardware)','Cloud & Server Admin (RHCE / MS AZURE / Hardware)'),
+        ('Cloud,Networking,Server Admin (CCNA / AWS / AZURE / MCSE / RHCE /Hardware)','Cloud,Networking,Server Admin (CCNA / AWS / AZURE / MCSE / RHCE /Hardware)'),
+        ('Devops Mastery (All Together)','Devops Mastery (All Together)'),
+        ('Devops-Selective','Devops-Selective'),
+        ('Academic Project','Academic Project'),
+        ('Ms Office (World / Excel / Power Point / Out Look)','Ms Office (World / Excel / Power Point / Out Look)'),
+        ('Data Analytics','Data Analytics'),
+        ('Advanced Ms Excel','Advanced Ms Excel'),
+        ('Graphic Designing (Photoshop)','Graphic Designing (Photoshop)'),
+        ('Graphic Designing  (Photoshop / Illustrator)','Graphic Designing  (Photoshop / Illustrator)'),
+        ('None Of The Above , Will Discuss Directly','None Of The Above , Will Discuss Directly'),
     ]
 
 
@@ -187,6 +227,25 @@ class Registermodel(models.Model):
 
     pincode = models.CharField(max_length=15)
 
-    hobbies = models.BooleanField(default=False)
+    hobbies = models.CharField(max_length=50)
 
     avatar = models.ImageField(upload_to='images/',null=True,blank=True)
+
+class Accountdetail(models.Model):
+
+    username = models.CharField(max_length=50,unique=True)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    gender = models.CharField(choices=GENDER_CHOICES,max_length=15)
+    dob = models.DateField() 
+    email = models.EmailField(max_length=50,unique=True)
+    mobile = models.CharField(max_length=15)
+
+   
+class OTP(models.Model):
+    email = models.EmailField(null=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    code = models.CharField(max_length=6)
+    created_at = models.DateTimeField(auto_now_add=True)
+    def is_expired(self):
+        return timezone.now()>self.created_at+datetime.timedelta(minutes=5)

@@ -1,37 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import *  
+from django.contrib.auth.forms import AuthenticationForm
 
 
-GENDER_CHOICES = [
-        ('male', 'Male'),
-        ('female', 'female'),
-        ('other', 'other'),
-    ]
-MODE_CHOICES=[
-    ('online','online'),
-    ('offline','offline')
-]
-LOC_CHOICES=[
-    ('technopark','technopark'),
-    ('thampanoor','thampanoor'),
-    ('kochi','kochi'),
-    ('nagarcoil','nagarcoil'),
-    ('online','online'),
-]
-COURSE_CHOICES = [
-        ('PHP Fullstack', 'PHP Fullstack'),
-        ('Python Fullstack', 'Python Fullstack'),
-        ('Java Fullstack', 'Java Fullstack'),
-        ('C#.NET Core 7 Fullstack', 'C#.NET Core 7 Fullstack'),
-        ('MEAN Fullstack', 'MEAN Fullstack'),
-        ('MERN Fullstack', 'MERN Fullstack'),
-        ('Data Science & AI (Python Guru)', 'Data Science & AI (Python Guru)'),
-        ('Python Mastery (Python / Django / MYSQL)', 'Python Mastery (Python / Django / MYSQL)'),
-        ('Google Flutter Mobile App Development (iOS / Android)', 'Google Flutter Mobile App Development (iOS / Android)'),
-        ('UI/UX Designing', 'UI/UX Designing'),
-        # Add more courses as needed...
-    ]
 
 class Contactform(forms.ModelForm):
 
@@ -88,10 +60,56 @@ class Registerform(forms.ModelForm):
 
     pincode = forms.CharField(label="pincode",max_length=15,required=False)
 
-    hobbies = forms.BooleanField(label="hobbies",required=False,widget=forms.CheckboxInput)
+    hobbies = forms.MultipleChoiceField(choices=HOBIES,widget=forms.CheckboxSelectMultiple,label=" hobbies")
 
     avatar = forms.ImageField(label="avatar",required=False)
+
 
     class Meta:
         model = Registermodel
         fields = ['regname','dob','gender','qualification','course','mobile','regemail','gaurdianmobile','mode','places','gaurdianname','occupation','time','adress','country','state','city','pincode','hobbies','avatar']
+
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label="username",max_length=50,required=True)
+    password  = forms.CharField(label="password",max_length=50,required=True,widget=forms.PasswordInput)
+    otp = forms.CharField(label="otp",max_length=6,required=False)
+    cookie_box = forms.BooleanField(label="cookie_box",required=False,widget=forms.CheckboxInput)
+
+class CreateAccount(forms.ModelForm):
+    username = forms.CharField(label="username",max_length=50,required=True)
+    first_name = forms.CharField(label="first_name",max_length=50,required=True)
+    last_name = forms.CharField(label="last_name",max_length=50,required=True)
+    email = forms.EmailField(label="email",max_length=50,required=True)
+    password = forms.CharField(label="password",max_length=50,required=True,widget=forms.PasswordInput)
+    confirm_password = forms.CharField(label="confirm_password",max_length=50,required=True,widget=forms.PasswordInput)
+    otp = forms.CharField(label="otp",max_length=6,required=False)
+
+    class Meta:
+        model = User
+        fields = ['username','email','password','first_name','last_name']
+
+class CreateAccountdetails(forms.ModelForm):
+    username = forms.CharField(label="username",max_length=50,required=True)
+    first_name = forms.CharField(label="first_name",max_length=50,required=True)
+    last_name = forms.CharField(label="last_name",max_length=50,required=True)
+    gender = forms.ChoiceField(label="gender",choices=GENDER_CHOICES,widget=forms.RadioSelect,required=True)
+    dob = forms.DateField(label="dob",required=True)
+    # mobilenumber = forms.CharField(label="mobilenumber",required=True)
+    mobile = forms.CharField(label="mobilenumber",max_length=15,required=True)
+    email = forms.EmailField(label="email",max_length=50,required=True)
+
+
+    class Meta:
+        model=Accountdetail
+        fields = ['username','first_name','last_name','gender','dob','email','mobile']
+
+class PasswordresetForm(forms.Form):
+    username = forms.CharField(label="username",max_length=50,required=True)
+    email = forms.CharField(label="email",max_length=50,required=True)
+    password  = forms.CharField(label="password",max_length=50,required=True,widget=forms.PasswordInput)
+    confirm_password = forms.CharField(label="confirm_password",max_length=50,required=True,widget=forms.PasswordInput)
+    otp = forms.CharField(label="otp",max_length=6,required=False)
+
+    class Meta:
+        model = User
+        fields = ['password']
