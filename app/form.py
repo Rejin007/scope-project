@@ -5,20 +5,20 @@ from django.contrib.auth.forms import AuthenticationForm
 
 
 
-class Contactform(forms.ModelForm):
+# class Contactform(forms.ModelForm):
 
-    user_name = forms.CharField(label="user_name",max_length=100,required=True)
+#     user_name = forms.CharField(label="user_name",max_length=100,required=True)
 
-    email = forms.EmailField(label="email",max_length=100,required=True)
+#     email = forms.EmailField(label="email",max_length=100,required=True)
 
-    subject = forms.CharField(label="subject",max_length=100,required=False)
+#     subject = forms.CharField(label="subject",max_length=100,required=False)
 
-    content = forms.CharField(label="content",max_length=500,required=True)
+#     content = forms.CharField(label="content",max_length=500,required=True)
 
-    class Meta:
-        model= Contactmodel
+#     class Meta:
+#         model= Contactmodel
 
-        fields = ['user_name','email','subject','content']
+#         fields = ['user_name','email','subject','content']
 
 class Registerform(forms.ModelForm):
 
@@ -48,7 +48,7 @@ class Registerform(forms.ModelForm):
 
     occupation = forms.CharField(label="occupation",max_length=100,required=False)
 
-    time = forms.BooleanField(label="time",required=True,widget=forms.CheckboxInput)
+    time = forms.MultipleChoiceField(choices=TIMING,widget=forms.CheckboxSelectMultiple,label="time")
 
     adress = forms.CharField(label="adress",max_length=100,required=False)
 
@@ -60,7 +60,7 @@ class Registerform(forms.ModelForm):
 
     pincode = forms.CharField(label="pincode",max_length=15,required=False)
 
-    hobbies = forms.MultipleChoiceField(choices=HOBIES,widget=forms.CheckboxSelectMultiple,label=" hobbies")
+    hobbies = forms.MultipleChoiceField(choices=HOBIES,widget=forms.CheckboxSelectMultiple,label="hobbies")
 
     avatar = forms.ImageField(label="avatar",required=False)
 
@@ -94,8 +94,7 @@ class CreateAccountdetails(forms.ModelForm):
     last_name = forms.CharField(label="last_name",max_length=50,required=True)
     gender = forms.ChoiceField(label="gender",choices=GENDER_CHOICES,widget=forms.RadioSelect,required=True)
     dob = forms.DateField(label="dob",required=True)
-    # mobilenumber = forms.CharField(label="mobilenumber",required=True)
-    mobile = forms.CharField(label="mobilenumber",max_length=15,required=True)
+    mobile = forms.CharField(label="mobile",max_length=15,required=True)
     email = forms.EmailField(label="email",max_length=50,required=True)
 
 

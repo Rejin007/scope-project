@@ -22,66 +22,65 @@ from django.contrib.auth import authenticate,login,logout as djangologout
 import secrets
 from django.contrib.auth import get_user_model
 
-
 from django.http import JsonResponse
 # Create your views here.
-
+#======================================================================================================================================== 
 def home_page(req):
 
     title = "home page"
 
     return render(req,"home.html",{"title":title})
-
+#======================================================================================================================================== 
 def about_page(req):
 
     title = "about page"
 
     return render(req,"about.html",{"title":title})
-
+#======================================================================================================================================== 
 def contact_page(req):
     title = "contact page"
-    form = Contactform(req.POST)
+    # form = Contactform(req.POST)
 
-    if req.method=='POST':
+    # if req.method=='POST':
 
-        if form.is_valid():
+    #     if form.is_valid():
 
-            user = form.save(commit=False)
+    #         user = form.save(commit=False)
 
-            mail=  req.POST.get('email')
-            subject = req.POST.get('subject')
-            text = req.POST.get('content')
-            name = req.POST.get('user_name')
-            # message = f"Name : {name}\nEmail : {mail}\nContent : {text}"
-            message = ""
-            html =f""" 
-                <html>
-                    <body>
-                        <h1 style="text-align: center;color: rgb(0, 255, 68);">YOUR EMAIL</h1>
-                        <h3 >Name : <span style="color: red;">{name}</span></h3>
-                        <h3>Email : <span style="color: red;">{mail}</span></h3>
-                        <h3>Content : <span style="color: red;"><br> &emsp; &emsp;&emsp;{text}</span></h3>
-                    </body>
-                </html>
-            """
+    #         mail=  req.POST.get('email')
+    #         subject = req.POST.get('subject')
+    #         text = req.POST.get('content')
+    #         name = req.POST.get('user_name')
+    #         # message = f"Name : {name}\nEmail : {mail}\nContent : {text}"
+    #         message = ""
+    #         html =f""" 
+    #             <html>
+    #                 <body>
+    #                     <h1 style="text-align: center;color: rgb(0, 255, 68);">YOUR EMAIL</h1>
+    #                     <h3 >Name : <span style="color: red;">{name}</span></h3>
+    #                     <h3>Email : <span style="color: red;">{mail}</span></h3>
+    #                     <h3>Content : <span style="color: red;"><br> &emsp; &emsp;&emsp;{text}</span></h3>
+    #                 </body>
+    #             </html>
+    #         """
 
-            try:
-                send_mail(
-                    subject = subject,
-                    message = message,
-                    from_email = mail,
-                    html_message= html,
-                    recipient_list = ['rejinrjr144@gmail.com'],
-                )
-                # user.save()
-                return redirect('app:homepage')
-            except Exception as e:
-                return HttpResponse(f"An error occurred while sending the email {e}")
+    #         try:
+    #             send_mail(
+    #                 subject = subject,
+    #                 message = message,
+    #                 from_email = mail,
+    #                 html_message= html,
+    #                 recipient_list = ['rejinrjr144@gmail.com'],
+    #             )
+    #             # user.save()
+    #             return redirect('app:homepage')
+    #         except Exception as e:
+    #             return HttpResponse(f"An error occurred while sending the email {e}")
 
-    return render(req,"contact.html",{"title":title,"form":form})
+    return render(req,"contact.html",{"title":title})
 
     
-
+#======================================================================================================================================== 
 def register(req):
 
     title = "register_form"
@@ -91,13 +90,15 @@ def register(req):
             print("registerform is valid")
             form.save()
             return redirect('app:homepage')
-        
+        else:
+            print("registerform is not valid")
+            print(form.errors)
         return render(req,"register_form.html",{"form":form})
     else:
         form = Registerform()
 
     return render(req,"register_form.html",{"title":title})
-
+#======================================================================================================================================== 
 # def mail(req):
 
 #     subject = "RJR image"
@@ -125,13 +126,13 @@ def register(req):
 
 #     print(req.errors)
 #     return HttpResponse("mail sended")
-
+#========================================================================================================================================    
 def mail(req,user):
     token = default_token_generator.make_token(user)
     uid = urlsafe_base64_encode(force_bytes(user.id))
     site = get_current_site(req)
     domain = site.domain
-    print(user.id,"*******",uid,"*******",token)
+    # print(user.id,"*******",uid,"*******",token)
     message = render_to_string(
         "mail.html",
         {'uid':uid,
@@ -140,12 +141,13 @@ def mail(req,user):
         'domain':domain
         }
     )
-    print("email = ",user.email)
+    # print("email = ",user.email)
     subject = 'verification mail from RJR'
     recipient_list=[user.email]
     email = EmailMessage(subject,message,'rejinrjr144@gmail.com',to=recipient_list)
     email.content_subtype='html'
     email.send()
+#========================================================================================================================================    
 
 def activate(req,uidb64,token):
 
@@ -156,21 +158,20 @@ def activate(req,uidb64,token):
         user.is_active = True
         user.save()
         return redirect('app:login')
-    
+#========================================================================================================================================    
 def cookie_page(req):
     return render(req,"cookie.html")
-
+#======================================================================================================================================== 
 def refresh(req):
 
     if OTP.objects.exists():
         OTP.objects.all().delete()  # delete otp when any store in db
     return redirect("app:login")
-    
+    #======================================================================================================================================== 
 def login_page(req):
     title = "login"
-    
+    form = LoginForm(req.POST)
     if req.method == 'POST':
-
 
         form = LoginForm(req,data=req.POST)
         if form.is_valid():
@@ -212,61 +213,60 @@ def login_page(req):
                         return render(req,"login.html")
 
                 else:
-                    return HttpResponse(print(form.errors))
+                    pass
             else:
-                print(form.errors)
+                pass
         else:
-            print(form.errors)
-            return render(req,"login.html",{"title":title,"form":form})
+            pass
 
-    return render(req,"login.html",{"title":title})
-
+    return render(req,"login.html",{"title":title,"form":form})
+#======================================================================================================================================== 
 def set_cookies(req,name):
     response = HttpResponse("cookies set")
     response.set_cookie(key='username',value = name,max_age=3600*24*15)
     return response
-
+#======================================================================================================================================== 
 def get_cookies(req):
     username = req.COOKIES.get('username')
     print(username)
     return HttpResponse(username)
-
+#======================================================================================================================================== 
 def delete_cook(req):
     response = HttpResponse("delete cookie")
     response.delete_cookie('username')
     return response
-
+#======================================================================================================================================== 
 def generate_otp(length=6):
     otp = ''.join([str(secrets.randbelow(10))for _ in range(length)])
     return otp
-
+#======================================================================================================================================== 
 def send_otp(user_email,otp):
     subject = "your otp code"
-    message = f"Your otp code is {otp}.it will expire in 5-minutes"
+    message = f"Your OTP Code is {otp}. It Will Expire in 5-Minutes"
     
     from_  = settings.EMAIL_HOST_USER
     send_mail(subject,message,from_,[user_email])
-
+#======================================================================================================================================== 
 def dashboard(req):
 
     title = "dashboard"
 
     return render(req,"dashboard.html",{"title":title})
-
+#======================================================================================================================================== 
 def logout(req):
     djangologout(req)
     response = redirect("app:homepage")
     response.delete_cookie("username")
 
     return response 
-
+#======================================================================================================================================== 
 def cource(req):
     title = "Courses"
     
     courses = Courses.objects.all()
 
     return render(req, "cources.html", {"title": title, "courses": courses})
-
+#======================================================================================================================================== 
 def subject(req,id):
 
     courses = Courses.objects.get(id=id)
@@ -344,8 +344,9 @@ def subject(req,id):
             "digital_Marketing":digital_Marketing,
             "microsoft":microsoft,
         })
-
+#======================================================================================================================================== 
 def forgotpassword(req):
+    title = "Reset password"
     if req.method == 'POST':
         form = PasswordresetForm(req.POST)
         if form.is_valid():
@@ -354,10 +355,10 @@ def forgotpassword(req):
             password = form.cleaned_data.get('password')
             confirm_password = form.cleaned_data.get('confirm_password')
             input_code = form.cleaned_data.get('otp')
-            user = get_user_model().objects.get( email=email) 
+            user = get_user_model().objects.get( email=email) # filter by emailinput is equal to email in db
             try:
-                latest_otp = OTP.objects.filter(user = user).latest('created_at')
-                if latest_otp.is_expired(): # if otp is expired
+                latest_otp = OTP.objects.filter(user = user).latest('created_at') #get latest otp from db(user is User model pk no = user eg : username/email we entered)
+                if latest_otp.is_expired(): # check if otp is expired 
                     latest_otp.delete()
                     raise OTP.DoesNotExist
             except OTP.DoesNotExist:
@@ -367,7 +368,7 @@ def forgotpassword(req):
                 otp = otp_code
                 send_otp(user_email,otp)
                 return render(req,"forgotpassword.html",{
-                    # "title":title,
+                    "title":title,
                     "form":form,
                     "otp_sends":True,
                     "username":username,
@@ -377,30 +378,24 @@ def forgotpassword(req):
                     })
             
             if input_code and input_code == latest_otp.code and not latest_otp.is_expired() and password == confirm_password: # login if all contition is true
-                User = get_user_model()
+                User = get_user_model()     #നിങ്ങൾ Django-ൽ ഉപയോഗിക്കുന്ന original/correct User model automatically തിരഞ്ഞെടുത്ത് കൊടുക്കുന്ന function ആണു്
                 user = User.objects.get(email = email)  # Or use email/id
-                user.set_password(password)
+                user.set_password(password) # for reset password
                 user.username
                 user.save()
                 latest_otp.delete()
-                print(user.save())
-
+                return redirect('app:login')
             else:
                 return render(req,"forgotpassword.html")
             
-            return HttpResponse("data saved")
-
-        # else:
-        #     print(form.errors)
-
         else:
             print(form.errors)
             return render(req,"forgotpassword.html")
 
-    return render(req,"forgotpassword.html")
-
+    return render(req,"forgotpassword.html",{"title":title})
+#======================================================================================================================================== 
 def createaccount(req):
-    title = "create account"
+    title = "sign up account"
     if req.method == 'POST':
         form = CreateAccount(req.POST)
         copyform = CreateAccountdetails(req.POST)
@@ -420,9 +415,13 @@ def createaccount(req):
                     return HttpResponseRedirect('https://mail.google.com/')
                 except Exception as e:
                     print(form.errors)
+        else:
+            pass
         return render(req,"createaccount.html",{"form":form})
     else:
         pass
     return render(req,"createaccount.html",{"title":title})
 
 # def otp(req):
+# def error_500(req):
+#     return render(req,"html_404.html",status=500)

@@ -35,9 +35,12 @@ urlpatterns=[
 
     path('cookie',views.cookie_page,name="cookie"),
 
-    path('refresh',views.refresh,name="refresh")
+    path('refresh',views.refresh,name="refresh"),
+
+    # path('500_error',views.error_500,name="500error"),
     
 
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_roor=settings.MEDIA_ROOT)
+# urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -12,6 +12,12 @@ MODE_CHOICES=[
     ('online','Online'),
     ('offline','Offline')
 ]
+TIMING = {
+    ('Between 8am - 10am','Between 8am - 10am'),
+    ('Between 9am - 1pm','Between 9am - 1pm'),
+    ('Between 1pm - 6pm','Between 1pm - 6pm'),
+    ('Between 6pm - 10pm','Between 6pm - 10pm'),
+}
 HOBIES = [
     ('Extracurricular activities', 'Extracurricular activities'),
     ('Reading Books', 'Reading Books'),
@@ -215,7 +221,7 @@ class Registermodel(models.Model):
 
     occupation = models.CharField(max_length=100)
 
-    time = models.BooleanField(default=False)
+    time = models.CharField(max_length=50)
 
     adress = models.CharField(max_length=100)
 
@@ -244,7 +250,7 @@ class Accountdetail(models.Model):
    
 class OTP(models.Model):
     email = models.EmailField(null=True)
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE) # foreign key to acess User model
     code = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)
     def is_expired(self):
